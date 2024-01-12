@@ -1,8 +1,11 @@
 {
-  "name": "dslog-vite",
+  "name": "ds-consolog",
   "version": "1.0.0",
-  "description": "",
+  "description": "log helper for ds",
   "main": "index.js",
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +13,7 @@
     "build": "rollup -c"
   },
   "keywords": [],
-  "author": "",
+  "author": "kmoji",
   "license": "ISC",
   "volta": {
     "node": "18.18.2"
