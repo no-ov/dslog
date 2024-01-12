@@ -1,15 +1,31 @@
+const getTtime = () => {
+    return new Date().toLocaleTimeString();
+};
+const showLog = () => {
+    const flag = localStorage.getItem("dslog");
+    return flag === "true";
+};
 const dslog = {
     info: (message) => {
-        console.log(`%cInfo: ${message}`, "color: #56b97f");
+        if (!showLog())
+            return;
+        console.log(`%c [ ${getTtime()} ] [ INFO ] ${message}`, "color: #56b97f");
     },
     method: (message) => {
-        console.log(`%cMethod: ${message}`, "color: #56b97f");
+        if (!showLog())
+            return;
+        console.log(`%c [ ${getTtime()} ] [ METH ] ${message} `, "color: #c0a4d8");
     },
     obj: (object) => {
-        console.log("Object:", object);
+        if (!showLog())
+            return;
+        const deepCopyObj = JSON.parse(JSON.stringify(object));
+        console.log(`%c [ ${getTtime()} ] [ OBJE ] `, "color: yellow", deepCopyObj);
     },
     error: (message) => {
-        console.log(`%cError: ${message}`, "color: red");
+        if (!showLog())
+            return;
+        console.log(`%c [ ${getTtime()} ] [ ERRO ] ${message} `, "color: red");
     },
 };
 
