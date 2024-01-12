@@ -11,6 +11,42 @@
     import { dslog } from './src/core/index.ts';
     // 使用 dslog 功能
     console.log('[ dslog ] >', dslog);
+    dslog.info('123')
+    dslog.error('123');
+  </script>
+
+  <button onclick="TextToSpeaker()">读</button>
+  <script>
+    const TextToSpeaker = (text) => {
+      text = '金标 6666, 长得帅'
+      // 创建一个新的 SpeechSynthesisUtterance 实例
+      const utterance = new SpeechSynthesisUtterance(text);
+
+      // 设置指定的语音角色
+      const xiaoxiao = getSpeaker("Microsoft Xiaoxiao Online (Natural) - Chinese (Mainland)");
+      const putong = getSpeaker("Google 普通话（中国大陆）");
+      if (xiaoxiao) {
+        utterance.voice = xiaoxiao;
+      } else if (putong) {
+        utterance.voice = putong;
+      }
+
+      // 可以设置朗读的属性，如语速和音调
+      utterance.rate = 1; // 语速，可以是0.1到10之间的值，默认为1
+      utterance.pitch = 1; // 音调，可以是0到2之间的值，默认为1
+
+      // 使用 SpeechSynthesis 接口的 speak 方法开始朗读
+      window.speechSynthesis.speak(utterance);
+    };
+
+    const getSpeaker = (speakName) => {
+      const sp = window.speechSynthesis.getVoices().find((voice) => voice.name === speakName);
+      if (sp) {
+        return sp;
+      } else {
+        return null;
+      }
+    };
   </script>
 </body>
 
