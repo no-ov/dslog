@@ -1,8 +1,10 @@
 {
   "name": "ds-consolog",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "log helper for ds",
-  "main": "index.js",
+  "main": "dist/dslog.cjs.js",
+  "module": "dist/dslog.esm.js",
+  "umd:main": "dist/dslog.umd.js",
   "files": [
     "dist"
   ],
