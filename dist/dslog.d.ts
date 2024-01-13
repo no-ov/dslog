@@ -1,8 +1,8 @@
 declare const dslog: {
-    info: (message: string) => void;
-    method: (message: string) => void;
+    info: (message: any) => void;
+    method: (message: any) => void;
     obj: (object: object) => void;
-    error: (message: string) => void;
+    error: (message: any) => void;
 };
 
 export { dslog };

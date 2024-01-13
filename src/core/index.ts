@@ -9,11 +9,11 @@ const showLog = () => {
 }
 
 export const dslog = {
-  info: (message: string) => {
+  info: (message: any) => {
     if (!showLog()) return
     console.log(`%c [ ${getTtime()} ] [ INFO ] ${message}`, "color: #56b97f");
   },
-  method: (message: string) => {
+  method: (message: any) => {
     if (!showLog()) return
     console.log(`%c [ ${getTtime()} ] [ METH ] ${message} `, "color: #c0a4d8");
   },
@@ -22,7 +22,7 @@ export const dslog = {
     const deepCopyObj = JSON.parse(JSON.stringify(object))
     console.log(`%c [ ${getTtime()} ] [ OBJE ] `, "color: yellow", deepCopyObj);
   },
-  error: (message: string) => {
+  error: (message: any) => {
     if (!showLog()) return
     console.log(`%c [ ${getTtime()} ] [ ERRO ] ${message} `, "color: red");
   },
