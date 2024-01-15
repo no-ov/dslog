@@ -1,5 +1,7 @@
 import ts from '@rollup/plugin-typescript'
 import dts from 'rollup-plugin-dts'
+import babel from '@rollup/plugin-babel'
+import del from 'rollup-plugin-delete';
 
 export default [
   {
@@ -19,7 +21,14 @@ export default [
         name: 'dslog'
       }
     ],
-    plugins: [ts()]
+    plugins: [
+      // del({ targets: 'dist/*' }),
+      ts(),
+      babel({
+        exclude: "node_modules/**",
+        babelHelpers: 'bundled'
+      }),
+    ]
   },
   {
     input: './src/core/index.ts',
