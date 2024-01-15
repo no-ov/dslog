@@ -1,7 +1,10 @@
 import ts from '@rollup/plugin-typescript'
 import dts from 'rollup-plugin-dts'
-import babel from '@rollup/plugin-babel'
+import { babel } from '@rollup/plugin-babel';
+import terser from "@rollup/plugin-terser";
 import del from 'rollup-plugin-delete';
+
+const extensions = ['.ts', '.tsx', '.js', '.jsx'];
 
 export default [
   {
@@ -25,9 +28,17 @@ export default [
       // del({ targets: 'dist/*' }),
       ts(),
       babel({
-        exclude: "node_modules/**",
-        babelHelpers: 'bundled'
+        extensions,
+        presets: [
+          '@babel/preset-env',
+          ["@babel/preset-typescript", {
+            "isTSX": true,
+            "allExtensions": true,
+          }]
+        ],
+        babelHelpers: 'bundled',
       }),
+      terser()
     ]
   },
   {
